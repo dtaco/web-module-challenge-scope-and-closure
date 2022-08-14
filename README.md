@@ -61,6 +61,9 @@ You will be running your tests in one terminal and debugging in the other. As yo
 Edit the `ReadMe` file with your answers to the questions below.
 
 1. In your own words, define closure (1-2 sentences).
+
+Simply put, closure is created when functions are created - whether it's within the global parent or within another function, and so on. Closure allows us to BOTH define private variables/pass arguements only allowed within the closed-off function AND use other variables/callback functions/etc.  avaialble in the surrounding lexical environment within this enclosure. This combination allows for svelte and powerful coding.
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -82,9 +85,16 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+
+Closure is used in the first function "personalDice" where the name is defined. I can tell becuase mainly - a function is defined, which is enough to define closure. But more importantly, closure is defined because this function has variables within it that are strictly only allowed to be used an altered within the function, and what is returned has already been altered by this fucntion where it can later be manipulated. - It is used as a calcualtor or specific device which can be called later with a variable.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+The phrase and name are always the same, as the argument "Dan" is passed through the const variable and subsequently through to the function. What is changing is the original function's Math.Random number, which cascades through the function, out of the return, into the console log, and invoked by the variable dansRoll().
+
 c. What is the lexical scope of `newRoll`? 
 
+ Lexical scope is the ability of a nested function to access it's parent function's variables. newRoll TECHNICALLY has access to the name arguement passed into personalDice, but nothing else.
 
 ### Task 3 - Stretch Goals
 
