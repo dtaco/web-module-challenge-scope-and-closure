@@ -31,10 +31,19 @@ console.log('example task:', processFirstItem(['foo','bar'],function(str){return
   
   1. What is the difference between counter1 and counter2?
   
+  counter1 has closure and by connecting to variables allows us to make multiple counters  with their own counting memory using the single function counterMaker. 
+  counter 2, while at it's core is similar as a counter, cannot create new separate counters - it's a single number that's going to continue to rise when the function is invoked.
+
   2. Which of the two uses a closure? How can you tell?
   
+  counter1 uses closure - it has a function embedded inside the function counterMaker so it can return a newly counted up variable each time.
+  Due to this closure, I can save this function in seperate containers (vairables) in order to create multiple counters.
+
   3. In what scenario would the counter1 code be preferable? In what scenario would 
-     counter2 be better?  
+     counter2 be better? 
+     
+  counter 1 would definitely be better for situations where we needed to have multiple separate counters going (e.g. single point systems or individual pvp video games with many separate players competing).
+  counter 2 may be better as an inverse - numbers are being recived into one counter, so it may be better for situations where we are counting one number from separate soruces (e.g. a team based game, or a game where multiple sources of score gathering exist)
 */
 
 // counter1 code
@@ -64,9 +73,20 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+  
+  let score = 0
+  function increment () {
+    
+    score += Math.floor(Math.random() * 3);
+    
+    return score;
+  }
+  
+  return increment ();
+ 
 }
+
 
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
@@ -83,9 +103,34 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*Code Here*/){
-  /*Code Here*/
+function finalScore(callback, numInnings){
+  let homeScoreArray = [];
+  let homeTotal = 0
+  let awayScoreArray = [];
+  let awayTotal = 0
+  
+ 
+
+  for (let i = 0; i < numInnings; i++) {
+    homeScoreArray.push(callback());
+  }
+
+  for (let i = 0; i < homeScoreArray.length; i++) {
+    homeTotal += homeScoreArray[i];
 }
+
+  for (let i = 0; i < numInnings; i++) {
+    awayScoreArray.push(callback());
+  }
+  
+for (let i = 0; i < awayScoreArray.length; i++) {
+    awayTotal += awayScoreArray[i];
+}
+  return {
+    Home:`${homeTotal}`,
+    Away:`${awayTotal}`
+  }
+} 
 
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
