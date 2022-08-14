@@ -129,7 +129,7 @@ for (let i = 0; i < awayScoreArray.length; i++) {
   return {
     Home:`${homeTotal}`,
     Away:`${awayTotal}`
-  }
+  };
 } 
 
 
@@ -146,9 +146,16 @@ For example: invoking getInningScore(inning) might return this object:
   */
 
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
-
+function getInningScore(callback) {
+  
+  let homeScore = callback() ;
+  let awayScore = callback() ;
+  
+  
+  return {
+    Home: `${homeScore}`,
+    Away: `${awayScore}`
+  }; 
 }
 
 
