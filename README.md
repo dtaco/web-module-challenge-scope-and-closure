@@ -86,7 +86,7 @@ dansRoll();
 
 a. Where is closure used in this code? How can you tell?
 
-Closure is used in the first function "personalDice" where the name is defined. I can tell becuase mainly - a function is defined, which is enough to define closure. But more importantly, closure is defined because this function has variables within it that are strictly only allowed to be used an altered within the function, and what is returned has already been altered by this fucntion where it can later be manipulated. - It is used as a calcualtor or specific device which can be called later with a variable.
+Closure is used in the first function "personalDice" where the name is defined. I can tell because mainly - a function is defined, which is enough to define closure. But more importantly, closure is defined because this function has variables within it that are strictly only allowed to be used an altered within the function, and what is returned has already been altered by this fucntion where it can later be manipulated. - It is used as a calcualtor or specific device which can be called later with a variable.
 
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
 
