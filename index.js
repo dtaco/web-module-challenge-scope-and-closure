@@ -74,17 +74,7 @@ NOTE: This will be a callback function for the tasks below
 */
 
 function inning(){
-  
-  let score = 0
-  function increment () {
-    
-    score += Math.floor(Math.random() * 3);
-    
-    return score;
-  }
-  
-  return increment ();
- 
+    return (Math.floor(Math.random() * Math.floor(3)));
 }
 
 
@@ -103,35 +93,21 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(callback, numInnings){
-  let homeScoreArray = [];
-  let homeTotal = 0
-  let awayScoreArray = [];
-  let awayTotal = 0
-  
- 
+function finalScore(inningCB, innings){
+  let homeScore = 0;
+  let awayScore = 0;
 
-  for (let i = 0; i < numInnings; i++) {
-    homeScoreArray.push(callback());
+  for (let i = 0; i < innings; i++){
+    homeScore = homeScore + inningCB();
+    awayScore = awayScore + inningCB();
+  } 
+return {
+  Home: homeScore,
+  Away: awayScore
   }
-
-  for (let i = 0; i < homeScoreArray.length; i++) {
-    homeTotal += homeScoreArray[i];
 }
 
-  for (let i = 0; i < numInnings; i++) {
-    awayScoreArray.push(callback());
-  }
-  
-for (let i = 0; i < awayScoreArray.length; i++) {
-    awayTotal += awayScoreArray[i];
-}
-  return {
-    Home:`${homeTotal}`,
-    Away:`${awayTotal}`
-  };
-} 
-
+console.log('Task 3', finalScore(inning, 9));
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
@@ -146,16 +122,12 @@ For example: invoking getInningScore(inning) might return this object:
   */
 
 
-function getInningScore(callback) {
-  
-  let homeScore = callback() ;
-  let awayScore = callback() ;
-  
-  
-  return {
-    Home: `${homeScore}`,
-    Away: `${awayScore}`
-  }; 
+function getInningScore(inningCB) {
+  return{
+    Home: inningCB(),
+    Away: inningCB()
+  }
+
 }
 
 
